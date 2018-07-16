@@ -41,6 +41,17 @@ public class Controller {
             return new ModelAndView(model, "threenames.vtl");
         }, velocityTemplateEngine);
 
+        get("/four", (req, res) -> {
+
+            Name name = new Name();
+            ArrayList<String> result = name.randomFour();
+
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("names", result);
+            return new ModelAndView(model, "fournames.vtl");
+        }, velocityTemplateEngine);
+
+
     }
 
 }
