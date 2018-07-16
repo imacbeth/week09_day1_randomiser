@@ -17,7 +17,7 @@ public class Controller {
             String result = name.randomName();
 
             HashMap<String, Object> model = new HashMap<>();
-            model.put("name", result);
+            model.put("names", result);
             return new ModelAndView(model, "result.vtl");
         }, velocityTemplateEngine);
 
@@ -27,8 +27,18 @@ public class Controller {
             ArrayList<String> result = name.randomPair();
 
             HashMap<String, Object> model = new HashMap<>();
-            model.put("name", result);
-            return new ModelAndView(model, "result.vtl");
+            model.put("names", result);
+            return new ModelAndView(model, "twonames.vtl");
+        }, velocityTemplateEngine);
+
+        get("/three", (req, res) -> {
+
+            Name name = new Name();
+            ArrayList<String> result = name.randomThree();
+
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("names", result);
+            return new ModelAndView(model, "threenames.vtl");
         }, velocityTemplateEngine);
 
     }
